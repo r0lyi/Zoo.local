@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="container mt-5">
-    <header class="text-center mb-5 animate__animated animate__fadeInDown">
-        <h1 class="display-4 fw-bold">Bienvenido a nuestro Zoológico</h1>
+    <header class="text-center mb-4 animate__animated animate__fadeInDown">
+        <h1 class="fw-bold">Bienvenido a nuestro Zoológico</h1>
         <p class="lead">Descubre las últimas noticias y actualizaciones sobre el reino animal.</p>
     </header>
 
@@ -15,13 +15,9 @@
         {% if noticias|length > 0 %}
             <div class="row">
                 {% for noticia in noticias %}
-                    <div class="col-md-6 col-lg-4 mb-4 animate__animated animate__fadeInUp animate__delay-{{ loop.index * 0.2 }}s">
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: {{ loop.index * 0.2 }}s">
                         <div class="card h-100 shadow-sm">
-                            {% if noticia.imagen %}
-                                <img src="{{ noticia.imagen }}" class="card-img-top" alt="Imagen de {{ noticia.titular }}">
-                            {% else %}
-                                <img src="/path/to/default-image.jpg" class="card-img-top" alt="Sin imagen disponible">
-                            {% endif %}
+                            <img src="{{ noticia.imagen ?: '/path/to/default-image.jpg' }}" class="card-img-top img-fluid" alt="Imagen de {{ noticia.titular }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ noticia.titular }}</h5>
                                 <p class="card-text text-highlight">
@@ -40,7 +36,7 @@
 
 <style>
     body {
-        background-color: #eef7e9; /* Verde suave para evocar naturaleza */
+        background-color: #eef7e9;
     }
 
     .card {
@@ -57,84 +53,33 @@
     .card-img-top {
         height: 200px;
         object-fit: cover;
-        transition: transform 0.3s;
-    }
-
-    .card:hover .card-img-top {
-        transform: scale(1.1);
-    }
-
-    .card-body {
-        position: relative;
     }
 
     .card-title {
-        color: #2c5f2d; /* Verde oscuro natural */
+        color: #2c5f2d;
         font-weight: bold;
-        margin-bottom: 10px;
     }
 
     .text-highlight {
-        background-color: #fff6e0; /* Tono cálido como arena o sol */
+        background-color: #fff6e0;
         padding: 10px;
         border-radius: 10px;
-        font-size: 1.2rem; /* Letras más grandes */
+        font-size: 1rem;
         font-weight: bold;
-        color: #4b5320; /* Verde musgo */
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        color: #4b5320;
     }
 
-    .text-highlight:before {
-        content: "🌳 ";
-    }
-
-    .latest-news h2 {
-        color: #2c5f2d; /* Verde oscuro natural */
-        font-weight: 600;
-    }
-
-    @keyframes slideIn {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 1.8rem;
         }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
+        .text-highlight {
+            font-size: 0.9rem;
+            padding: 8px;
         }
-    }
-
-    .animate__animated {
-        animation-duration: 1s;
-        animation-fill-mode: both;
-    }
-
-    .animate__fadeInDown {
-        animation-name: fadeInDown;
-    }
-
-    .animate__zoomIn {
-        animation-name: zoomIn;
-    }
-
-    .animate__fadeInUp {
-        animation-name: fadeInUp;
+        .card-img-top {
+            height: 150px;
+        }
     }
 </style>
-
-<script>
-    document.addEventListener('scroll', function () {
-        const elements = document.querySelectorAll('.animate__animated');
-        const triggerBottom = window.innerHeight / 1.2;
-
-        elements.forEach(el => {
-            const boxTop = el.getBoundingClientRect().top;
-            if (boxTop < triggerBottom) {
-                el.classList.add('animate__visible');
-            } else {
-                el.classList.remove('animate__visible');
-            }
-        });
-    });
-</script>
 {% endblock %}

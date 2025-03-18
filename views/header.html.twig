@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-<header class="my-4">
+<header class="mb-4">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg animate__animated animate__fadeInDown">
         <div class="container">
             <!-- Logo -->
@@ -19,36 +19,54 @@
 
             <!-- Menú -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto text-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/home"><i class="fas fa-home"></i> Inicio</a>
+                        <a class="nav-link active" href="/home">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/species_list"><i class="fas fa-dog"></i> Animales</a>
+                        <a class="nav-link" href="/species_list">
+                            <i class="fas fa-dog"></i> Animales
+                        </a>
                     </li>
 
                     {% if is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin"><i class="fas fa-user-shield"></i> Panel Admin</a>
+                            <a class="nav-link" href="/admin">
+                                <i class="fas fa-user-shield"></i> Panel Admin
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/foro"><i class="fas fa-comments"></i> Foros</a>
+                            <a class="nav-link" href="/foro">
+                                <i class="fas fa-comments"></i> Foros
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/adopcion"><i class="fas fa-heart"></i> Adopción</a>
+                            <a class="nav-link" href="/adopcion">
+                                <i class="fas fa-heart"></i> Adopción
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/perfil"><i class="fas fa-user"></i> Perfil</a>
+                            <a class="nav-link" href="/perfil">
+                                <i class="fas fa-user"></i> Perfil
+                            </a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+                            <a class="nav-link" href="/login">
+                                <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register"><i class="fas fa-user-plus"></i> Registrarse</a>
+                            <a class="nav-link" href="/register">
+                                <i class="fas fa-user-plus"></i> Registrarse
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/foro"><i class="fas fa-users"></i> Foro Comunitario</a>
+                            <a class="nav-link" href="/foro">
+                                <i class="fas fa-users"></i> Foro Comunitario
+                            </a>
                         </li>
                     {% endif %}
                 </ul>
