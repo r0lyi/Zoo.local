@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Animales - Zoológico{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="text-center mb-5 animate__animated animate__fadeInDown">
+        <h1 class="display-4 fw-bold">Lista de Animales</h1>
+        <p class="lead">Conoce a todos los animales que viven en nuestro zoológico.</p>
+    </header>
+
+    <section class="animals-list">
+        {% if animales|length > 0 %}
+            <div class="row">
+                {% for animal in animales %}
+                    <div class="col-md-4 mb-4 animate__animated animate__fadeInUp">
+                        <div class="card h-100 shadow-sm">
+                            <img src="{{ animal.imagen }}" class="card-img-top" alt="Imagen de {{ animal.nombre }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ animal.nombre }}</h5>
+                                <p class="card-text">
+                                    Especie: {{ animal.especie }} <br>
+                                    Edad: {{ animal.edad }} años
+                                </p>
+                                <a href="/animal/{{ animal.id }}" class="btn btn-link">Ver detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center animate__animated animate__fadeInUp">No hay animales disponibles en este momento.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
